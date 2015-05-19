@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e1e1e0b49d3a4e0fad2cad059070f08f" Name="Diagram1" >
+        <EntityTypeShape EntityType="DemoCSLA.Cliente" Width="1.5" PointX="0.5" PointY="2.5" />
+        <EntityTypeShape EntityType="DemoCSLA.Producto" Width="1.5" PointX="8" PointY="3.125" />
+        <EntityTypeShape EntityType="DemoCSLA.FacturaCabecera" Width="1.625" PointX="2.875" PointY="0.5" />
+        <EntityTypeShape EntityType="DemoCSLA.FacturaDetalle" Width="1.5" PointX="5.5" PointY="2.375" />
+        <AssociationConnector Association="DemoCSLA.ClienteFacturaCabecera" />
+        <AssociationConnector Association="DemoCSLA.ProductoFacturaDetalle" />
+        <AssociationConnector Association="DemoCSLA.FacturaCabeceraFacturaDetalle" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

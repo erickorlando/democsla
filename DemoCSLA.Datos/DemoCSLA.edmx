@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DemoCSLA.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DemoCSLAStoreContainer">
+    <EntitySet Name="ClienteSet" EntityType="DemoCSLA.Store.ClienteSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductoSet" EntityType="DemoCSLA.Store.ProductoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FacturaCabeceraSet" EntityType="DemoCSLA.Store.FacturaCabeceraSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FacturaDetalleSet" EntityType="DemoCSLA.Store.FacturaDetalleSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ClienteFacturaCabecera" Association="DemoCSLA.Store.ClienteFacturaCabecera">
+      <End Role="Cliente" EntitySet="ClienteSet" />
+      <End Role="FacturaCabecera" EntitySet="FacturaCabeceraSet" />
+    </AssociationSet>
+    <AssociationSet Name="ProductoFacturaDetalle" Association="DemoCSLA.Store.ProductoFacturaDetalle">
+      <End Role="Producto" EntitySet="ProductoSet" />
+      <End Role="FacturaDetalle" EntitySet="FacturaDetalleSet" />
+    </AssociationSet>
+    <AssociationSet Name="FacturaCabeceraFacturaDetalle" Association="DemoCSLA.Store.FacturaCabeceraFacturaDetalle">
+      <End Role="FacturaCabecera" EntitySet="FacturaCabeceraSet" />
+      <End Role="FacturaDetalle" EntitySet="FacturaDetalleSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ClienteSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RazonSocial" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RUC" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Correo" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductoSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PrecioUnitario" Type="decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FacturaCabeceraSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Numero" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="SubTotal" Type="decimal" Nullable="false" />
+    <Property Name="Impuestos" Type="decimal" Nullable="false" />
+    <Property Name="Total" Type="decimal" Nullable="false" />
+    <Property Name="Cliente_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FacturaDetalleSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrecioUnitario" Type="decimal" Nullable="false" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
+    <Property Name="Total" Type="decimal" Nullable="false" />
+    <Property Name="Producto_ID" Type="int" Nullable="false" />
+    <Property Name="Factura_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ClienteFacturaCabecera">
+    <End Role="Cliente" Type="DemoCSLA.Store.ClienteSet" Multiplicity="1" />
+    <End Role="FacturaCabecera" Type="DemoCSLA.Store.FacturaCabeceraSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FacturaCabecera">
+        <PropertyRef Name="Cliente_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductoFacturaDetalle">
+    <End Role="Producto" Type="DemoCSLA.Store.ProductoSet" Multiplicity="1" />
+    <End Role="FacturaDetalle" Type="DemoCSLA.Store.FacturaDetalleSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FacturaDetalle">
+        <PropertyRef Name="Producto_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FacturaCabeceraFacturaDetalle">
+    <End Role="FacturaCabecera" Type="DemoCSLA.Store.FacturaCabeceraSet" Multiplicity="1" />
+    <End Role="FacturaDetalle" Type="DemoCSLA.Store.FacturaDetalleSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FacturaCabecera">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FacturaDetalle">
+        <PropertyRef Name="Factura_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DemoCSLA" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DemoCSLAContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ClienteSet" EntityType="DemoCSLA.Cliente" />
+          <EntitySet Name="ProductoSet" EntityType="DemoCSLA.Producto" />
+          <EntitySet Name="FacturaCabeceraSet" EntityType="DemoCSLA.FacturaCabecera" />
+          <EntitySet Name="FacturaDetalleSet" EntityType="DemoCSLA.FacturaDetalle" />
+          <AssociationSet Name="ClienteFacturaCabecera" Association="DemoCSLA.ClienteFacturaCabecera">
+            <End Role="Cliente" EntitySet="ClienteSet" />
+            <End Role="FacturaCabecera" EntitySet="FacturaCabeceraSet" />
+          </AssociationSet>
+          <AssociationSet Name="ProductoFacturaDetalle" Association="DemoCSLA.ProductoFacturaDetalle">
+            <End Role="Producto" EntitySet="ProductoSet" />
+            <End Role="FacturaDetalle" EntitySet="FacturaDetalleSet" />
+          </AssociationSet>
+          <AssociationSet Name="FacturaCabeceraFacturaDetalle" Association="DemoCSLA.FacturaCabeceraFacturaDetalle">
+            <End Role="FacturaCabecera" EntitySet="FacturaCabeceraSet" />
+            <End Role="FacturaDetalle" EntitySet="FacturaDetalleSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RazonSocial" Type="String" Nullable="false" />
+          <Property Name="RUC" Type="String" Nullable="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" />
+          <Property Name="Correo" Type="String" Nullable="false" />
+          <NavigationProperty Name="Facturas" Relationship="DemoCSLA.ClienteFacturaCabecera" FromRole="Cliente" ToRole="FacturaCabecera" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" Nullable="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" />
+          <Property Name="PrecioUnitario" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="FacturaDetalle" Relationship="DemoCSLA.ProductoFacturaDetalle" FromRole="Producto" ToRole="FacturaDetalle" />
+        </EntityType>
+        <EntityType Name="FacturaCabecera">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numero" Type="String" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="SubTotal" Type="Decimal" Nullable="false" />
+          <Property Name="Impuestos" Type="Decimal" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="DemoCSLA.ClienteFacturaCabecera" FromRole="FacturaCabecera" ToRole="Cliente" />
+          <NavigationProperty Name="Detalles" Relationship="DemoCSLA.FacturaCabeceraFacturaDetalle" FromRole="FacturaCabecera" ToRole="FacturaDetalle" />
+        </EntityType>
+        <EntityType Name="FacturaDetalle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrecioUnitario" Type="Decimal" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="Producto" Relationship="DemoCSLA.ProductoFacturaDetalle" FromRole="FacturaDetalle" ToRole="Producto" />
+          <NavigationProperty Name="Factura" Relationship="DemoCSLA.FacturaCabeceraFacturaDetalle" FromRole="FacturaDetalle" ToRole="FacturaCabecera" />
+        </EntityType>
+        <Association Name="ClienteFacturaCabecera">
+          <End Type="DemoCSLA.Cliente" Role="Cliente" Multiplicity="1" />
+          <End Type="DemoCSLA.FacturaCabecera" Role="FacturaCabecera" Multiplicity="*" />
+        </Association>
+        <Association Name="ProductoFacturaDetalle">
+          <End Type="DemoCSLA.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="DemoCSLA.FacturaDetalle" Role="FacturaDetalle" Multiplicity="*" />
+        </Association>
+        <Association Name="FacturaCabeceraFacturaDetalle">
+          <End Type="DemoCSLA.FacturaCabecera" Role="FacturaCabecera" Multiplicity="1" />
+          <End Type="DemoCSLA.FacturaDetalle" Role="FacturaDetalle" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DemoCSLAStoreContainer" CdmEntityContainer="DemoCSLAContainer">
+    <EntitySetMapping Name="ClienteSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DemoCSLA.Cliente)">
+        <MappingFragment StoreEntitySet="ClienteSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+          <ScalarProperty Name="RUC" ColumnName="RUC" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DemoCSLA.Producto)">
+        <MappingFragment StoreEntitySet="ProductoSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacturaCabeceraSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DemoCSLA.FacturaCabecera)">
+        <MappingFragment StoreEntitySet="FacturaCabeceraSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Impuestos" ColumnName="Impuestos" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacturaDetalleSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DemoCSLA.FacturaDetalle)">
+        <MappingFragment StoreEntitySet="FacturaDetalleSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ClienteFacturaCabecera" TypeName="DemoCSLA.ClienteFacturaCabecera" StoreEntitySet="FacturaCabeceraSet">
+      <EndProperty Name="Cliente">
+        <ScalarProperty Name="ID" ColumnName="Cliente_ID" />
+      </EndProperty>
+      <EndProperty Name="FacturaCabecera">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProductoFacturaDetalle" TypeName="DemoCSLA.ProductoFacturaDetalle" StoreEntitySet="FacturaDetalleSet">
+      <EndProperty Name="Producto">
+        <ScalarProperty Name="ID" ColumnName="Producto_ID" />
+      </EndProperty>
+      <EndProperty Name="FacturaDetalle">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FacturaCabeceraFacturaDetalle" TypeName="DemoCSLA.FacturaCabeceraFacturaDetalle" StoreEntitySet="FacturaDetalleSet">
+      <EndProperty Name="FacturaCabecera">
+        <ScalarProperty Name="ID" ColumnName="Factura_ID" />
+      </EndProperty>
+      <EndProperty Name="FacturaDetalle">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
