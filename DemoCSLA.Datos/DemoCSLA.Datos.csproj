@@ -75,6 +75,9 @@
     <Compile Include="Producto.cs">
       <DependentUpon>DemoCSLA.tt</DependentUpon>
     </Compile>
+    <Compile Include="Producto.Designer.cs">
+      <DependentUpon>Producto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

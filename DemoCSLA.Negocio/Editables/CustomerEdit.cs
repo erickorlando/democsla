@@ -18,7 +18,7 @@ namespace DemoCSLA.Negocio.Editables
 			set { SetProperty(IDProperty, value); }
 		}
 
-		public static readonly PropertyInfo<string> NameProperty = RegisterProperty<string>(c => c.Name);
+		public static readonly PropertyInfo<string> NameProperty = RegisterProperty<string>(c => c.Name, "Nombre");
 		[Required]
 		public string Name
 		{
@@ -141,7 +141,7 @@ namespace DemoCSLA.Negocio.Editables
 		{
 			using (var ctx = DbContextManager<DemoCSLAContainer>.GetManager())
 			{
-				var customer = Cliente.GetClienteByID(ID);
+				var customer = Cliente.GetClienteByID(id);
 
 				ctx.DbContext.ClienteSet.Remove(customer);
 				ctx.DbContext.SaveChanges();

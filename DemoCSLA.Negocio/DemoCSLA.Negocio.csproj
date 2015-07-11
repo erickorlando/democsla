@@ -57,9 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Editables\CustomerEdit.cs" />
+    <Compile Include="Editables\ProductEdit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadOnly\CustomerInfo.cs" />
     <Compile Include="ReadOnly\CustomerInfoList.cs" />
+    <Compile Include="ReadOnly\ProductInfo.cs" />
+    <Compile Include="ReadOnly\ProductInfoList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
