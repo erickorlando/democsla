@@ -64,10 +64,28 @@
     <Compile Include="CustomerEditForm.Designer.cs">
       <DependentUpon>CustomerEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlantillaBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlantillaBase.Designer.cs">
+      <DependentUpon>PlantillaBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlantillaBaseMantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlantillaBaseMantenimiento.Designer.cs">
+      <DependentUpon>PlantillaBaseMantenimiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CustomerEditForm.resx">
       <DependentUpon>CustomerEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlantillaBase.resx">
+      <DependentUpon>PlantillaBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlantillaBaseMantenimiento.resx">
+      <DependentUpon>PlantillaBaseMantenimiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -77,6 +95,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DemoCSLA.Negocio.Editables.CustomerEdit.datasource" />
@@ -99,6 +118,21 @@
       <Project>{b39007e5-495e-4657-957a-cc3221823b72}</Project>
       <Name>DemoCSLA.Negocio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nuevo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

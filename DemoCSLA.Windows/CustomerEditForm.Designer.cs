@@ -44,10 +44,6 @@
 			this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.btnNew = new System.Windows.Forms.Button();
-			this.btnEdit = new System.Windows.Forms.Button();
-			this.btnSave = new System.Windows.Forms.Button();
-			this.btnCancel = new System.Windows.Forms.Button();
 			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
 			nameLabel = new System.Windows.Forms.Label();
 			rUCLabel = new System.Windows.Forms.Label();
@@ -73,7 +69,7 @@
 			rUCLabel.AutoSize = true;
 			rUCLabel.Location = new System.Drawing.Point(12, 58);
 			rUCLabel.Name = "rUCLabel";
-			rUCLabel.Size = new System.Drawing.Size(33, 13);
+			rUCLabel.Size = new System.Drawing.Size(32, 13);
 			rUCLabel.TabIndex = 3;
 			rUCLabel.Text = "RUC:";
 			// 
@@ -100,7 +96,7 @@
 			this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerEditBindingSource, "Name", true));
 			this.nameTextBox.Location = new System.Drawing.Point(68, 29);
 			this.nameTextBox.Name = "nameTextBox";
-			this.nameTextBox.Size = new System.Drawing.Size(213, 20);
+			this.nameTextBox.Size = new System.Drawing.Size(213, 21);
 			this.nameTextBox.TabIndex = 0;
 			// 
 			// customerEditBindingSource
@@ -112,7 +108,7 @@
 			this.rUCTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerEditBindingSource, "RUC", true));
 			this.rUCTextBox.Location = new System.Drawing.Point(68, 55);
 			this.rUCTextBox.Name = "rUCTextBox";
-			this.rUCTextBox.Size = new System.Drawing.Size(213, 20);
+			this.rUCTextBox.Size = new System.Drawing.Size(213, 21);
 			this.rUCTextBox.TabIndex = 1;
 			// 
 			// phoneTextBox
@@ -120,7 +116,7 @@
 			this.phoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerEditBindingSource, "Phone", true));
 			this.phoneTextBox.Location = new System.Drawing.Point(68, 81);
 			this.phoneTextBox.Name = "phoneTextBox";
-			this.phoneTextBox.Size = new System.Drawing.Size(213, 20);
+			this.phoneTextBox.Size = new System.Drawing.Size(213, 21);
 			this.phoneTextBox.TabIndex = 2;
 			// 
 			// emailTextBox
@@ -128,7 +124,7 @@
 			this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerEditBindingSource, "Email", true));
 			this.emailTextBox.Location = new System.Drawing.Point(68, 107);
 			this.emailTextBox.Name = "emailTextBox";
-			this.emailTextBox.Size = new System.Drawing.Size(213, 20);
+			this.emailTextBox.Size = new System.Drawing.Size(213, 21);
 			this.emailTextBox.TabIndex = 3;
 			// 
 			// customerInfoListBindingSource
@@ -153,6 +149,7 @@
 			this.customerInfoListDataGridView.Location = new System.Drawing.Point(12, 151);
 			this.customerInfoListDataGridView.Name = "customerInfoListDataGridView";
 			this.customerInfoListDataGridView.ReadOnly = true;
+			this.customerInfoListDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.customerInfoListDataGridView.Size = new System.Drawing.Size(547, 243);
 			this.customerInfoListDataGridView.TabIndex = 8;
 			// 
@@ -184,46 +181,6 @@
 			this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
 			this.dataGridViewTextBoxColumn5.ReadOnly = true;
 			// 
-			// btnNew
-			// 
-			this.btnNew.Location = new System.Drawing.Point(361, 27);
-			this.btnNew.Name = "btnNew";
-			this.btnNew.Size = new System.Drawing.Size(75, 23);
-			this.btnNew.TabIndex = 4;
-			this.btnNew.Text = "&Nuevo";
-			this.btnNew.UseVisualStyleBackColor = true;
-			this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-			// 
-			// btnEdit
-			// 
-			this.btnEdit.Location = new System.Drawing.Point(361, 53);
-			this.btnEdit.Name = "btnEdit";
-			this.btnEdit.Size = new System.Drawing.Size(75, 23);
-			this.btnEdit.TabIndex = 5;
-			this.btnEdit.Text = "&Editar";
-			this.btnEdit.UseVisualStyleBackColor = true;
-			this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-			// 
-			// btnSave
-			// 
-			this.btnSave.Location = new System.Drawing.Point(361, 79);
-			this.btnSave.Name = "btnSave";
-			this.btnSave.Size = new System.Drawing.Size(75, 23);
-			this.btnSave.TabIndex = 6;
-			this.btnSave.Text = "&Grabar";
-			this.btnSave.UseVisualStyleBackColor = true;
-			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-			// 
-			// btnCancel
-			// 
-			this.btnCancel.Location = new System.Drawing.Point(361, 105);
-			this.btnCancel.Name = "btnCancel";
-			this.btnCancel.Size = new System.Drawing.Size(75, 23);
-			this.btnCancel.TabIndex = 7;
-			this.btnCancel.Text = "&Cancelar";
-			this.btnCancel.UseVisualStyleBackColor = true;
-			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-			// 
 			// errorProvider1
 			// 
 			this.errorProvider1.ContainerControl = this;
@@ -234,10 +191,6 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(571, 406);
-			this.Controls.Add(this.btnCancel);
-			this.Controls.Add(this.btnSave);
-			this.Controls.Add(this.btnEdit);
-			this.Controls.Add(this.btnNew);
 			this.Controls.Add(this.customerInfoListDataGridView);
 			this.Controls.Add(emailLabel);
 			this.Controls.Add(this.emailTextBox);
@@ -248,9 +201,16 @@
 			this.Controls.Add(nameLabel);
 			this.Controls.Add(this.nameTextBox);
 			this.Name = "CustomerEditForm";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Clientes";
-			this.Load += new System.EventHandler(this.CustomerEditForm_Load);
+			this.Controls.SetChildIndex(this.nameTextBox, 0);
+			this.Controls.SetChildIndex(nameLabel, 0);
+			this.Controls.SetChildIndex(this.rUCTextBox, 0);
+			this.Controls.SetChildIndex(rUCLabel, 0);
+			this.Controls.SetChildIndex(this.phoneTextBox, 0);
+			this.Controls.SetChildIndex(phoneLabel, 0);
+			this.Controls.SetChildIndex(this.emailTextBox, 0);
+			this.Controls.SetChildIndex(emailLabel, 0);
+			this.Controls.SetChildIndex(this.customerInfoListDataGridView, 0);
 			((System.ComponentModel.ISupportInitialize)(this.customerEditBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.customerInfoListBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.customerInfoListDataGridView)).EndInit();
@@ -273,10 +233,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-		private System.Windows.Forms.Button btnNew;
-		private System.Windows.Forms.Button btnEdit;
-		private System.Windows.Forms.Button btnSave;
-		private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.ErrorProvider errorProvider1;
 	}
 }

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace DemoCSLA.Windows
 {
-	public partial class CustomerEditForm : Form
+	public partial class CustomerEditForm : PlantillaBaseMantenimiento
 	{
 
 		private CustomerEdit customer;
@@ -16,11 +16,12 @@ namespace DemoCSLA.Windows
 			InitializeComponent();
 		}
 
-		private void CustomerEditForm_Load(object sender, EventArgs e)
+		protected override void Cargar()
 		{
 			// Cargamos todos los registros en la Grilla.
 
 			Listar();
+			base.Cargar();
 		}
 
 		private void Listar()
@@ -46,8 +47,9 @@ namespace DemoCSLA.Windows
 			}
 		}
 
-		private void btnNew_Click(object sender, EventArgs e)
+		protected override void Nuevo()
 		{
+			base.Nuevo();
 			customer = CustomerEdit.NewCustomerEdit();
 
 			customerEditBindingSource.DataSource = customer;
@@ -56,9 +58,36 @@ namespace DemoCSLA.Windows
 			nameTextBox.Focus();
 		}
 
-		private void btnSave_Click(object sender, EventArgs e)
+		protected override void Editar()
 		{
-			customerEditBindingSource.RaiseListChangedEvents = false;
+			base.Editar();
+			// Obtenemos el registro seleccionado y lo enviamos a las cajas de texto.
+
+			try
+			{
+				if (customerInfoListBindingSource.Current == null) return;
+
+				var seleccionado = customerInfoListBindingSource.Current as CustomerInfo;
+
+				// Cargamos el registro en base al ID.
+				customer = CustomerEdit.GetCustomerEdit(seleccionado.ID);
+
+				customerEditBindingSource.DataSource = customer;
+				customerEditBindingSource.ResetBindings(false);
+				nameTextBox.Focus();
+
+			}
+			catch (DataPortalException ex)
+			{
+				MessageBox.Show(ex.BusinessException.Message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+
+		}
+
+		protected override void Grabar()
+		{
+			base.Grabar();
+				customerEditBindingSource.RaiseListChangedEvents = false;
 
 			customerEditBindingSource.EndEdit();
 
@@ -84,37 +113,20 @@ namespace DemoCSLA.Windows
 			}
 
 			customerEditBindingSource.RaiseListChangedEvents = true;
-		}
+	}
 
-		private void btnEdit_Click(object sender, EventArgs e)
+		protected override void Cancelar()
 		{
-			// Obtenemos el registro seleccionado y lo enviamos a las cajas de texto.
-
-			try
-			{
-				if (customerInfoListBindingSource.Current == null) return;
-
-				var seleccionado = customerInfoListBindingSource.Current as CustomerInfo;
-
-				// Cargamos el registro en base al ID.
-				customer = CustomerEdit.GetCustomerEdit(seleccionado.ID);
-
-				customerEditBindingSource.DataSource = customer;
-				customerEditBindingSource.ResetBindings(false);
-				nameTextBox.Focus();
-
-			}
-			catch (DataPortalException ex)
-			{
-				MessageBox.Show(ex.BusinessException.Message, "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
-
-		}
-
-		private void btnCancel_Click(object sender, EventArgs e)
-		{
+			base.Cancelar();
 			customerEditBindingSource.CancelEdit();
 			customerEditBindingSource.ResetBindings(false);
 		}
+
+		protected override void Refrescar()
+		{
+			base.Refrescar();
+			Listar();
+		}
+		
 	}
 }
