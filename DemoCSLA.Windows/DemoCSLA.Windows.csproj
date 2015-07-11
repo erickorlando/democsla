@@ -64,6 +64,12 @@
     <Compile Include="CustomerEditForm.Designer.cs">
       <DependentUpon>CustomerEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlantillaBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,16 +82,28 @@
     <Compile Include="PlantillaBaseMantenimiento.Designer.cs">
       <DependentUpon>PlantillaBaseMantenimiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProductEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductEditForm.Designer.cs">
+      <DependentUpon>ProductEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CustomerEditForm.resx">
       <DependentUpon>CustomerEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlantillaBase.resx">
       <DependentUpon>PlantillaBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlantillaBaseMantenimiento.resx">
       <DependentUpon>PlantillaBaseMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductEditForm.resx">
+      <DependentUpon>ProductEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -99,7 +117,9 @@
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DemoCSLA.Negocio.Editables.CustomerEdit.datasource" />
+    <None Include="Properties\DataSources\DemoCSLA.Negocio.Editables.ProductEdit.datasource" />
     <None Include="Properties\DataSources\DemoCSLA.Negocio.ReadOnly.CustomerInfoList.datasource" />
+    <None Include="Properties\DataSources\DemoCSLA.Negocio.ReadOnly.ProductInfoList.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

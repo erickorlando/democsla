@@ -15,6 +15,15 @@ namespace DemoCSLA.Windows
 		public PlantillaBase()
 		{
 			InitializeComponent();
+
+			KeyPreview = true;
+
+			KeyUp += (s, e) =>
+				{
+					// Al presionar ESC se cierra el formulario.
+					if (e.KeyCode == Keys.Escape)
+						Close();
+				};
 		}
 	}
 }

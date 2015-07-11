@@ -16,7 +16,7 @@ namespace DemoCSLA.Windows
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new CustomerEditForm());
+			Application.Run(new MainForm());
 		}
 	}
 }

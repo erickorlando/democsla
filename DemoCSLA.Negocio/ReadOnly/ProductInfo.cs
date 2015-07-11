@@ -22,7 +22,7 @@ namespace DemoCSLA.Negocio.ReadOnly
 			return DataPortal.Fetch<ProductInfo>(entidad);
 		}
 
-		protected void DataPortal_Fetch(ProductInfo entidad)
+		protected void DataPortal_Fetch(Producto entidad)
 		{
 			ID = entidad.ID;
 			Codigo = entidad.Codigo;

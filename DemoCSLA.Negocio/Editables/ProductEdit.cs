@@ -111,7 +111,7 @@ namespace DemoCSLA.Negocio.Editables
 		{
 			using (var ctx = DbContextManager<DemoCSLAContainer>.GetManager())
 			{
-				var product = Producto.GetProductoById(ID);
+				var product = ctx.DbContext.ProductoSet.SingleOrDefault(p => p.ID == ID);
 
 				DoInsertUpdate(product);
 

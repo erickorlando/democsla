@@ -86,8 +86,7 @@ namespace DemoCSLA.Windows
 
 		protected override void Grabar()
 		{
-			base.Grabar();
-				customerEditBindingSource.RaiseListChangedEvents = false;
+			customerEditBindingSource.RaiseListChangedEvents = false;
 
 			customerEditBindingSource.EndEdit();
 
@@ -98,6 +97,7 @@ namespace DemoCSLA.Windows
 				customer.Save();
 
 				Listar();
+				base.Grabar();
 			}
 			catch (DataPortalException ex)
 			{
@@ -113,7 +113,7 @@ namespace DemoCSLA.Windows
 			}
 
 			customerEditBindingSource.RaiseListChangedEvents = true;
-	}
+		}
 
 		protected override void Cancelar()
 		{
@@ -127,6 +127,6 @@ namespace DemoCSLA.Windows
 			base.Refrescar();
 			Listar();
 		}
-		
+
 	}
 }
